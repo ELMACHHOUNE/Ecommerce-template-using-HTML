@@ -68,8 +68,8 @@ function addToCart(productName) {
             cart.push({ ...product, quantity: 1 });
         }
         updateCartDisplay();
-        updateCartCount();
     }
+    updateCartCount();
 }
 
 function updateCartCount() {
@@ -132,7 +132,7 @@ function checkout() {
     const message = `Hello, I would like to order the following items:\n\n` +
                     cart.map(item => `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`).join('\n') +
                     `\n\nTotal: $${totalPrice}\n\nPlease contact me for further details.`;
-    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
 function closeCart() {
@@ -153,3 +153,4 @@ document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('cart').addEventListener('click', () => {
     cartElement.style.display = 'block';
 });
+    
